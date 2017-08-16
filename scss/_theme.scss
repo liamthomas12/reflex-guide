@@ -1,0 +1,124 @@
+@font-face {
+    font-family: 'ubuntu';
+    src: url('../fonts/ubuntu-r-webfont.woff2') format('woff2'),
+         url('../fonts/ubuntu-r-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'ubuntu';
+    src: url('../fonts/ubuntu-ri-webfont.woff2') format('woff2'),
+         url('../fonts/ubuntu-ri-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+
+}
+@font-face {
+    font-family: 'ubuntu';
+    src: url('../fonts/ubuntu-m-webfont.woff2') format('woff2'),
+         url('../fonts/ubuntu-m-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'ubuntu';
+    src: url('../fonts/ubuntu-mi-webfont.woff2') format('woff2'),
+         url('../fonts/ubuntu-mi-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+}
+*{
+	@include box-sizing(border-box);
+}
+html {
+	font-size: 62.5%;
+	width: 100%;
+}
+
+body{
+	font-family: 'ubuntu';
+	font-size: 1.4rem;
+}
+.form__control{
+	display: inline-block;
+	vertical-align: top;
+	& + & {
+		margin-left: 20px;
+	}
+	label{
+		font-size: 16px;
+		color: #333;
+		display: block;
+		margin-bottom: 6px;
+	}
+
+	select,
+	input{
+		@include appearance(none);
+		background-color: white;
+		border: 1px solid #ddd;
+		border-radius: 3px;
+		padding: 7px 12px;
+		min-width: 140px;
+	}
+	span{
+		display: block;
+		margin-top: 5px;
+		color: #333;
+	}
+}
+.grid-wrapper{
+	max-width: 100%;
+	width: 1260px;
+	overflow:hidden;
+	margin: 0 auto;
+}
+.column{
+	position:relative;
+	height: 90px;
+	background-color: #FBAB7E;
+	background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+
+	&:before{
+		content: attr(data-width);
+		position: absolute;
+		left: calc(100% + 10px);
+		top: 10px;
+		color: #333;
+		text-transform: uppercase;
+		font-size: 26px;
+		font-weight:bold;
+		z-index: 50;
+	}
+	&:after{
+		content: attr(data-col);
+		position: absolute;
+		left: calc(100% + 10px);
+		bottom: 10px;
+		color: #333;
+		text-transform: uppercase;
+		font-size: 26px;
+		font-weight:bold;
+		z-index: 50;
+	}
+
+	@at-root{
+		.grid__col-12 & {
+			&:after,
+			&:before{
+				left: auto;
+				right: 10px;
+				color: white;
+			}
+		}
+	}
+
+}
+
+form{
+	max-width: 1200px;
+	margin: 20px auto 20px;
+	padding: 3rem;
+	border: 1px solid #ddd;
+}

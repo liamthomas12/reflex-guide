@@ -1,0 +1,15 @@
+{
+	"name": "CHH-Shop",
+	"description": "",
+	"repository": "https://github.com/ClassCreative/chhshop",
+	"version": "1.0.0",
+	"private": true,
+	"devDependencies": {
+		"compass-importer": "^0.4.1",
+		"grunt": "^1.0.1",
+		"grunt-contrib-watch": "^1.0.0",
+		"grunt-sass": "^2.0.0",
+		"normalize.scss": "^0.1.0"
+	},
+	"dependencies": {}
+}

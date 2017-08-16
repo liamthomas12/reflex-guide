@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Reflex Guide</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$('#container-width').val($('.grid-wrapper').outerWidth());
+			updateWidths();
+
+			$('form').on('submit', function(event) { return false; });
+			$('#container-width').on('change', function(event) {
+				event.preventDefault();
+				$('.grid-wrapper').css('width', $(this).val());
+				updateWidths();
+			});
+
+			$('#padding-type').on('change', function(e){
+				if(e.currentTarget.value === 'none'){
+
+					$('.grid-wrapper .grid').removeClass('grid--padding-sm grid--padding-md grid--padding-lg grid--bleed-outer-x').addClass('grid--bleed');
+				} else  {
+					$('.grid-wrapper .grid').removeClass('grid--padding-sm grid--padding-md grid--padding-lg grid--bleed').addClass('grid--bleed-outer-x grid--padding-' + $(this).val());
+					
+				}
+				updateWidths();
+			})
+
+			function updateWidths($el){
+				$('.column').each(function(index, el) {
+					let $el = $(el);
+					$el.attr('data-width', Math.round($el.outerWidth()) + "px");
+
+				});
+			}
+		});
+	</script>
+</head>
+<body>
+	<form>
+		<div class="form__control">
+			<label>Container width in px</label>
+			<input id="container-width" type="tel" />
+		</div>
+		<div class="form__control">
+			<label>Padding type</label>
+			<select id="padding-type">
+				<option value="none">none</option>
+				<option value="sm">Small</option>
+				<option value="medium" selected="selected">Medium</option>
+				<option value="lg">large</option>
+			</select>
+			<span>spacing values can be set per project, for this demo its: 0, 10px, 20px, 40px</span>
+		</div>
+	</form>
+	<hr />
+	<div class="grid-wrapper">
+		<div class="grid grid--bleed-outer-x">
+			<div class="grid__col-12"><div data-width="" data-col="12" class="grid__cell column"></div></div>
+		</div>
+		<div class="grid grid--bleed-outer-x">
+			<div class="grid__col-11"><div data-width="" data-col="11" class="grid__cell column"></div></div>
+		</div>
+		<div class="grid grid--bleed-outer-x">
+			<div class="grid__col-10"><div data-width="" data-col="10" class="grid__cell column"></div></div>
+		</div>
+		<div class="grid grid--bleed-outer-x">
+			<div class="grid__col-9"><div data-width="" data-col="9" class="grid__cell column"></div></div>
+		</div>
+		<div class="grid grid--bleed-outer-x">
+			<div class="grid__col-8"><div data-width="" data-col="8" class="grid__cell column"></div></div>
+		</div>
+		<div class="grid grid--bleed-outer-x">
+			<div class="grid__col-7"><div data-width="" data-col="7" class="grid__cell column"></div></div>
+		</div>
+		<div class="grid grid--bleed-outer-x">
+			<div class="grid__col-6"><div data-width="" data-col="6" class="grid__cell column"></div></div>
+		</div>
+		<div class="grid grid--bleed-outer-x">
+			<div class="grid__col-5"><div data-width="" data-col="5" class="grid__cell column"></div></div>
+		</div>
+		<div class="grid grid--bleed-outer-x">
+			<div class="grid__col-4"><div data-width="" data-col="4" class="grid__cell column"></div></div>
+		</div>
+		<div class="grid grid--bleed-outer-x">
+			<div class="grid__col-3"><div data-width="" data-col="3" class="grid__cell column"></div></div>
+		</div>
+		<div class="grid grid--bleed-outer-x">
+			<div class="grid__col-2"><div data-width="" data-col="2" class="grid__cell column"></div></div>
+		</div>
+		<div class="grid grid--bleed-outer-x">
+			<div class="grid__col-1"><div data-width="" data-col="1" class="grid__cell column"></div></div>
+		</div>
+	</div>
+</body>
+</html>
